@@ -25,7 +25,7 @@ docker run \
     -p 500:500/udp \
     -p 4500:4500/udp \
     -d --privileged \
-    hwdsl2/ipsec-vpn-server
+    nasty870/vpn-ipsec-server
 ```
 
 Your VPN login details will be randomly generated. See [Retrieve VPN login details](#retrieve-vpn-login-details).
@@ -50,7 +50,7 @@ Advanced users can use this image on macOS with [Docker for Mac](https://docs.do
 Get the trusted build from the [Docker Hub registry](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/):
 
 ```
-docker pull hwdsl2/ipsec-vpn-server
+docker pull nasty870/vpn-ipsec-server
 ```
 Supported platforms: `linux/amd64`, `linux/arm64` and `linux/arm/v7`.
 
@@ -71,7 +71,7 @@ Two pre-built images are available. The default Alpine-based image is only ~17MB
 | Cisco IPsec       | ✅                       | ✅                              |
 | IKEv2             | ✅                       | ✅                              |
 
-**Note:** To use the Debian-based image, replace every `hwdsl2/ipsec-vpn-server` with `hwdsl2/ipsec-vpn-server:debian` in this README.
+**Note:** To use the Debian-based image, replace every `nasty870/vpn-ipsec-server` with `nasty870/vpn-ipsec-server:debian` in this README.
 
 ## How to use this image
 
@@ -145,7 +145,7 @@ docker run \
     -p 500:500/udp \
     -p 4500:4500/udp \
     -d --privileged \
-    hwdsl2/ipsec-vpn-server
+    nasty870/vpn-ipsec-server
 ```
 
 In this command, we use the `-v` option of `docker run` to create a new [Docker volume](https://docs.docker.com/storage/volumes/) named `ikev2-vpn-data`, and mount it into `/etc/ipsec.d` in the container. IKEv2 related data such as certificates and keys will persist in the volume, and later when you need to re-create the Docker container, just specify the same volume again.
@@ -189,9 +189,9 @@ Get your computer or device to use the VPN. Please refer to:
 
 **[Configure and use IKEv2 VPN (recommended)](#configure-and-use-ikev2-vpn)**
 
-**[Configure IPsec/L2TP VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md)**
+**[Configure IPsec/L2TP VPN Clients](https://github.com/lay870/vpn-ipsec/blob/master/docs/clients.md)**
 
-**[Configure IPsec/XAuth ("Cisco IPsec") VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth.md)**
+**[Configure IPsec/XAuth ("Cisco IPsec") VPN Clients](https://github.com/lay870/vpn-ipsec/blob/master/docs/clients-xauth.md)**
 
 Enjoy your very own VPN! :sparkles::tada::rocket::sparkles:
 
@@ -201,13 +201,13 @@ Enjoy your very own VPN! :sparkles::tada::rocket::sparkles:
 
 ## Important notes
 
-**Windows users**: For IPsec/L2TP mode, a [one-time registry change](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#windows-error-809) is required if the VPN server or client is behind NAT (e.g. home router).
+**Windows users**: For IPsec/L2TP mode, a [one-time registry change](https://github.com/lay870/vpn-ipsec/blob/master/docs/clients.md#windows-error-809) is required if the VPN server or client is behind NAT (e.g. home router).
 
-The same VPN account can be used by your multiple devices. However, due to an IPsec/L2TP limitation, if you wish to connect multiple devices from behind the same NAT (e.g. home router), you must use [IKEv2](#configure-and-use-ikev2-vpn) or [IPsec/XAuth](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth.md) mode.
+The same VPN account can be used by your multiple devices. However, due to an IPsec/L2TP limitation, if you wish to connect multiple devices from behind the same NAT (e.g. home router), you must use [IKEv2](#configure-and-use-ikev2-vpn) or [IPsec/XAuth](https://github.com/lay870/vpn-ipsec/blob/master/docs/clients-xauth.md) mode.
 
 If you wish to add, edit or remove VPN user accounts, first update your `env` file, then you must remove and re-create the Docker container using instructions from the [next section](#update-docker-image). Advanced users can [bind mount](docs/advanced-usage.md#bind-mount-the-env-file) the `env` file.
 
-For servers with an external firewall (e.g. [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)/[GCE](https://cloud.google.com/vpc/docs/firewalls)), open UDP ports 500 and 4500 for the VPN. Aliyun users, see [#433](https://github.com/hwdsl2/setup-ipsec-vpn/issues/433).
+For servers with an external firewall (e.g. [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)/[GCE](https://cloud.google.com/vpc/docs/firewalls)), open UDP ports 500 and 4500 for the VPN. Aliyun users, see [#433](https://github.com/lay870/vpn-ipsec/issues/433).
 
 Clients are set to use [Google Public DNS](https://developers.google.com/speed/public-dns/) when the VPN is active. If another DNS provider is preferred, read [this section](docs/advanced-usage.md#use-alternative-dns-servers).
 
@@ -216,20 +216,20 @@ Clients are set to use [Google Public DNS](https://developers.google.com/speed/p
 To update the Docker image and container, first [download](#download) the latest version:
 
 ```
-docker pull hwdsl2/ipsec-vpn-server
+docker pull nasty870/vpn-ipsec-server
 ```
 
 If the Docker image is already up to date, you should see:
 
 ```
-Status: Image is up to date for hwdsl2/ipsec-vpn-server:latest
+Status: Image is up to date for nasty870/vpn-ipsec-server:latest
 ```
 
 Otherwise, it will download the latest version. To update your Docker container, first write down all your [VPN login details](#retrieve-vpn-login-details). Then remove the Docker container with `docker rm -f ipsec-vpn-server`. Finally, re-create it using instructions from [How to use this image](#how-to-use-this-image).
 
 ## Configure and use IKEv2 VPN
 
-IKEv2 mode has improvements over IPsec/L2TP and IPsec/XAuth ("Cisco IPsec"), and does not require an IPsec PSK, username or password. Read more [here](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto.md).
+IKEv2 mode has improvements over IPsec/L2TP and IPsec/XAuth ("Cisco IPsec"), and does not require an IPsec PSK, username or password. Read more [here](https://github.com/lay870/vpn-ipsec/blob/master/docs/ikev2-howto.md).
 
 First, check container logs to view details for IKEv2:
 
@@ -249,7 +249,7 @@ docker exec -it ipsec-vpn-server ls -l /etc/ipsec.d
 docker cp ipsec-vpn-server:/etc/ipsec.d/vpnclient.p12 ./
 ```
 
-**Next steps:** [Configure your devices](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto.md) to use the IKEv2 VPN.
+**Next steps:** [Configure your devices](https://github.com/lay870/vpn-ipsec/blob/master/docs/ikev2-howto.md) to use the IKEv2 VPN.
 
 <details>
 <summary>
@@ -276,7 +276,7 @@ docker exec -it ipsec-vpn-server ikev2.sh -h
 Learn how to change the IKEv2 server address.
 </summary>
 
-In certain circumstances, you may need to change the IKEv2 server address. For example, to switch to use a DNS name, or after server IP changes. To change the IKEv2 server address, first [open a bash shell inside the container](docs/advanced-usage.md#bash-shell-inside-container), then [follow these instructions](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/ikev2-howto.md#change-ikev2-server-address). Note that this will override the `VPN_DNS_NAME` variable you specified in the `env` file, and the container logs will no longer show up-to-date information for IKEv2.
+In certain circumstances, you may need to change the IKEv2 server address. For example, to switch to use a DNS name, or after server IP changes. To change the IKEv2 server address, first [open a bash shell inside the container](docs/advanced-usage.md#bash-shell-inside-container), then [follow these instructions](https://github.com/lay870/vpn-ipsec/blob/master/docs/ikev2-howto.md#change-ikev2-server-address). Note that this will override the `VPN_DNS_NAME` variable you specified in the `env` file, and the container logs will no longer show up-to-date information for IKEv2.
 </details>
 <details>
 <summary>
