@@ -2,7 +2,7 @@
 
 # IPsec VPN Server on Docker
 
-[![Build Status](https://github.com/lay870/docker-vpn-ipsec/actions/workflows/main-alpine.yml/badge.svg)](https://github.com/hwdsl2/docker-ipsec-vpn-server/actions/workflows/main-alpine.yml) [![GitHub Stars](docs/images/badges/github-stars.svg)](https://github.com/lay870/docker-vpn-ipsec/stargazers) [![Docker Stars](docs/images/badges/docker-stars.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/) [![Docker Pulls](docs/images/badges/docker-pulls.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/)
+[![Build Status](https://github.com/lay870/docker-vpn-ipsec/actions/workflows/main-alpine.yml/badge.svg)](https://github.com/lay870/docker-vpn-ipsec/actions/workflows/main-alpine.yml) [![GitHub Stars](docs/images/badges/github-stars.svg)](https://github.com/lay870/docker-vpn-ipsec/stargazers) [![Docker Stars](docs/images/badges/docker-stars.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/) [![Docker Pulls](docs/images/badges/docker-pulls.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/)
 
 Docker image to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2.
 
