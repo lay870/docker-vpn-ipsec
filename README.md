@@ -1,8 +1,8 @@
-[English](README.md) | [中文](README-zh.md)
+[English](README.md)
 
 # IPsec VPN Server on Docker
 
-[![Build Status](https://github.com/hwdsl2/docker-ipsec-vpn-server/actions/workflows/main-alpine.yml/badge.svg)](https://github.com/hwdsl2/docker-ipsec-vpn-server/actions/workflows/main-alpine.yml) [![GitHub Stars](docs/images/badges/github-stars.svg)](https://github.com/hwdsl2/docker-ipsec-vpn-server/stargazers) [![Docker Stars](docs/images/badges/docker-stars.svg)](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server/) [![Docker Pulls](docs/images/badges/docker-pulls.svg)](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server/)
+[![Build Status](https://github.com/lay870/docker-vpn-ipsec/actions/workflows/main-alpine.yml/badge.svg)](https://github.com/hwdsl2/docker-ipsec-vpn-server/actions/workflows/main-alpine.yml) [![GitHub Stars](docs/images/badges/github-stars.svg)](https://github.com/lay870/docker-vpn-ipsec/stargazers) [![Docker Stars](docs/images/badges/docker-stars.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/) [![Docker Pulls](docs/images/badges/docker-pulls.svg)](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/)
 
 Docker image to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2.
 
@@ -10,7 +10,7 @@ Based on Alpine 3.16 or Debian 11 with [Libreswan](https://libreswan.org) (IPsec
 
 An IPsec VPN encrypts your network traffic, so that nobody between you and the VPN server can eavesdrop on your data as it travels via the Internet. This is especially useful when using unsecured networks, e.g. at coffee shops, airports or hotel rooms.
 
-[**&raquo; See also: IPsec VPN Server Auto Setup Scripts**](https://github.com/hwdsl2/setup-ipsec-vpn)
+[**&raquo; See also: IPsec VPN Server Auto Setup Scripts**](https://github.com/lay870/docker-vpn-ipsec)
 
 ## Quick start
 
@@ -47,19 +47,11 @@ Advanced users can use this image on macOS with [Docker for Mac](https://docs.do
 
 ## Download
 
-Get the trusted build from the [Docker Hub registry](https://hub.docker.com/r/hwdsl2/ipsec-vpn-server/):
+Get the trusted build from the [Docker Hub registry](https://hub.docker.com/repository/docker/nasty870/vpn-ipsec-server/):
 
 ```
 docker pull hwdsl2/ipsec-vpn-server
 ```
-
-Alternatively, you may download from [Quay.io](https://quay.io/repository/hwdsl2/ipsec-vpn-server):
-
-```
-docker pull quay.io/hwdsl2/ipsec-vpn-server
-docker image tag quay.io/hwdsl2/ipsec-vpn-server hwdsl2/ipsec-vpn-server
-```
-
 Supported platforms: `linux/amd64`, `linux/arm64` and `linux/arm/v7`.
 
 Advanced users can [build from source code](docs/advanced-usage.md#build-from-source-code) on GitHub.
@@ -70,7 +62,7 @@ Two pre-built images are available. The default Alpine-based image is only ~17MB
 
 |                   | Alpine-based             | Debian-based                   |
 | ----------------- | ------------------------ | ------------------------------ |
-| Image name        | hwdsl2/ipsec-vpn-server  | hwdsl2/ipsec-vpn-server:debian |
+| Image name        | nasty870/vpn-ipsec-server  | nasty870/vpn-ipsec-server:debian |
 | Compressed size   | ~ 17 MB                  | ~ 62 MB                        |
 | Base image        | Alpine Linux 3.16        | Debian Linux 11                |
 | Platforms         | amd64, arm64, arm/v7     | amd64, arm64, arm/v7           |
@@ -191,7 +183,7 @@ docker cp ipsec-vpn-server:/etc/ipsec.d/vpn-gen.env ./
 
 ## Next steps
 
-*Read this in other languages: [English](README.md#next-steps), [中文](README-zh.md#下一步).*
+*Read this in other languages: [English](README.md#next-steps).*
 
 Get your computer or device to use the VPN. Please refer to:
 
@@ -201,13 +193,11 @@ Get your computer or device to use the VPN. Please refer to:
 
 **[Configure IPsec/XAuth ("Cisco IPsec") VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth.md)**
 
-**[Download PDF versions of VPN docs (supporters)](https://ko-fi.com/post/PDF-versions-of-Setup-IPsec-VPN-docs-for-easy-shar-E1E4DO69I)**
-
 Enjoy your very own VPN! :sparkles::tada::rocket::sparkles:
 
 > Like this project? You can show your support or appreciation.
 >
-> <a href="https://ko-fi.com/hwdsl2" target="_blank"><img height="36" width="187" src="docs/images/kofi2.png" border="0" alt="Buy Me a Coffee at ko-fi.com" /></a> &nbsp;<a href="https://coindrop.to/hwdsl2" target="_blank"><img src="docs/images/embed-button.png" height="36" width="145" border="0" alt="Coindrop.to me" /></a>
+> <a href="https://ko-fi.com/rahmatsaleh" target="_blank"><img height="36" width="187" src="docs/images/kofi2.png" border="0" alt="Buy Me a Coffee at ko-fi.com" /></a> &nbsp;<a href="https://coindrop.to/lay" target="_blank"><img src="docs/images/embed-button.png" height="36" width="145" border="0" alt="Coindrop.to me" /></a>
 
 ## Important notes
 
