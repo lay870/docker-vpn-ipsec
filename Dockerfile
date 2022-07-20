@@ -1,12 +1,3 @@
-#
-# Copyright (C) 2021-2022 Lin Song <linsongui@gmail.com>
-#
-# This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
-# Unported License: http://creativecommons.org/licenses/by-sa/3.0/
-#
-# Attribution required: please include my name in any derivative and let me
-# know how you have improved it!
-
 FROM alpine:3.16
 
 ENV SWAN_VER 4.7
@@ -35,7 +26,7 @@ RUN set -x \
          bison flex gcc make libc-dev bsd-compat-headers linux-pam-dev \
          nss-dev libcap-ng-dev libevent-dev curl-dev nspr-dev
 
-RUN wget -t 3 -T 30 -nv -O /opt/src/ikev2.sh https://github.com/hwdsl2/setup-ipsec-vpn/raw/39bdb36484ab814c017da79cd3606951e45d3316/extras/ikev2setup.sh \
+RUN wget -t 3 -T 30 -nv -O /opt/src/ikev2.sh https://raw.githubusercontent.com/lay870/vpn-ipsec/main/extras/ikev2setup.sh \
     && chmod +x /opt/src/ikev2.sh \
     && ln -s /opt/src/ikev2.sh /usr/bin
 
@@ -49,13 +40,13 @@ ARG VERSION
 ARG VCS_REF
 ENV IMAGE_VER $BUILD_DATE
 
-LABEL maintainer="Lin Song <linsongui@gmail.com>" \
+LABEL maintainer="kolay" \
     org.opencontainers.image.created="$BUILD_DATE" \
     org.opencontainers.image.version="$VERSION" \
     org.opencontainers.image.revision="$VCS_REF" \
-    org.opencontainers.image.authors="Lin Song <linsongui@gmail.com>" \
-    org.opencontainers.image.title="IPsec VPN Server on Docker" \
+    org.opencontainers.image.authors="kolay" \
+    org.opencontainers.image.title="VPN IPsec Server on Docker" \
     org.opencontainers.image.description="Docker image to run an IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2." \
-    org.opencontainers.image.url="https://github.com/hwdsl2/docker-ipsec-vpn-server" \
-    org.opencontainers.image.source="https://github.com/hwdsl2/docker-ipsec-vpn-server" \
-    org.opencontainers.image.documentation="https://github.com/hwdsl2/docker-ipsec-vpn-server"
+    org.opencontainers.image.url="https://github.com/lay870/docker-vpn-ipsec" \
+    org.opencontainers.image.source="https://github.com/lay870/docker-vpn-ipsec" \
+    org.opencontainers.image.documentation="https://github.com/lay870/docker-vpn-ipsec"
